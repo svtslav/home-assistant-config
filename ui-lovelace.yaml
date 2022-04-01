@@ -72,22 +72,22 @@ views:
             name: 'Вход в подъезд'
             camera_image: camera.main_entrance
             camera_view: live
-            entity: sensor.time_date
-            show_state: true
+            entity: camera.main_entrance
+            show_state: false
     
           - type: picture-entity
             name: 'Лобби'
             camera_image: camera.lobby
             camera_view: live
-            entity: sensor.time_date
-            show_state: true
+            entity: camera.lobby
+            show_state: false
             
           - type: picture-entity
             name: 'Лифты'
             camera_image: camera.lobby_elevators
             camera_view: live
-            entity: sensor.time_date
-            show_state: true
+            entity: camera.lobby_elevators
+            show_state: false
 
       - type: grid
         title: 'Паркинг'
@@ -98,15 +98,22 @@ views:
               name: 'Лифты (-2 этаж)'
               camera_image: camera.parking_elevators
               camera_view: auto
-              entity: sensor.time_date
-              show_state: true
+              entity: camera.parking_elevators
+              show_state: false
+              
+            - type: picture-entity
+              name: 'Лифты (-2 этаж)'
+              camera_image: camera.parking_elevators
+              camera_view: auto
+              entity: camera.parking_elevators
+              show_state: false
               
             - type: picture-entity
               name: Паркинг
               camera_image: camera.parking
               camera_view: auto
-              entity: sensor.time_date
-              show_state: true
+              entity: camera.parking
+              show_state: false
               
       - type: grid
         title: 'Двор'
@@ -118,20 +125,20 @@ views:
           name: '3 корпус'
           camera_image: camera.courtyard_3_building
           camera_view: auto
-          entity: sensor.time_date
-          show_state: true
+          entity: camera.courtyard_3_building
+          show_state: false
           
         - type: picture-entity
           name: '1 корпус'
           camera_image: camera.courtyard_1_building
           camera_view: auto
-          entity: sensor.time_date
-          show_state: true
+          entity: camera.courtyard_1_building
+          show_state: false
           
         - type: picture-entity
           name: 'Детская площадка'
           camera_image: camera.playground
           camera_view: auto
-          entity: sensor.time_date
-          show_state: true
+          entity: camera.playground
+          show_state: false
           
