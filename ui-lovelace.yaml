@@ -1,0 +1,80 @@
+title: Home Assistant
+views:
+
+  - title: Главная
+    id: mian
+    cards:
+      - type: entities
+        title: 'Сервер'
+        entities:
+          - entity: sensor.home_assistant_operating_system_version
+          - entity: sensor.home_assistant_operating_system_newest_version
+
+  - title: Камеры
+    id: cameras
+    cards:
+
+      - type: grid
+        title: Подъезд
+        columns: 2
+        square: false
+        cards:
+          - type: picture-entity
+            name: Вход в подъезд
+            entity: camera.main_entrance
+            camera_view: live
+            show_state: false
+    
+          - type: picture-entity
+            name: Лобби
+            entity: camera.lobby
+            camera_view: live
+            show_state: false
+            
+          - type: picture-entity
+            name: Лифты
+            entity: camera.lobby_elevators
+            camera_view: live
+            show_state: false
+
+      - type: grid
+        title: Паркинг
+        columns: 2
+        square: false
+        cards:
+            - type: picture-entity
+              name: 'Лифты (-2 этаж)'
+              entity: camera.parking_elevators
+              camera_view: auto
+              show_state: false
+              
+            - type: picture-entity
+              name: Паркинг
+              entity: camera.parking
+              camera_view: auto
+              show_state: false
+              
+      - type: grid
+        title: Двор
+        columns: 2
+        square: false
+        cards:
+          
+        - type: picture-entity
+          name: '3 корпус'
+          entity: camera.courtyard_3_building
+          camera_view: auto
+          show_state: false
+          
+        - type: picture-entity
+          name: '1 корпус'
+          entity: camera.courtyard_1_building
+          camera_view: auto
+          show_state: false
+          
+        - type: picture-entity
+          name: 'Детская площадка'
+          entity: camera.playground
+          camera_view: auto
+          show_state: false
+          
