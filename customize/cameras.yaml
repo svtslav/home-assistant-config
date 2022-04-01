@@ -1,0 +1,16 @@
+        camera.main_entrance:
+            friendly_name: 'Вход в подъезд'
+        camera.lobby:
+            friendly_name: 'Лобби'
+        camera.lobby_elevators:
+            friendly_name: 'Лифты'
+        camera.parking:
+            friendly_name: 'Паркинг'
+        camera.parking_elevators:
+            friendly_name: 'Лифты (-2 этаж)'
+        camera.playground:
+            friendly_name: 'Детская площадка'
+        camera.courtyard_1_building:
+            friendly_name: '1 корпус (улица)'
+        camera.courtyard_3_building:
+            friendly_name: '3 корпус (улица)'

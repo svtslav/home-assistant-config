@@ -1,8 +1,8 @@
-title: Home Assistant
+title: 'Home Assistant'
 views:
-
-  - title: Главная
+  - title: 'Главная'
     id: mian
+    icon: mdi:memory
     cards:
       - type: horizontal-stack
         cards:
@@ -33,7 +33,7 @@ views:
             cards:
               - type: sensor
                 entity: sensor.memory_use
-                name: 'Занято'
+                name: 'Используется'
               - type: sensor
                 entity: sensor.memory_free
                 name: 'Свободно'
@@ -60,37 +60,37 @@ views:
                 name: 'Свободно'
 
 
-  - title: Камеры
+  - title: 'Камеры'
     id: cameras
     cards:
       - type: grid
-        title: Подъезд
+        title: 'Подъезд'
         columns: 2
         square: false
         cards:
           - type: picture-entity
-            name: Вход в подъезд
+            name: 'Вход в подъезд'
             camera_image: camera.main_entrance
             camera_view: live
             entity: sensor.time_date
             show_state: true
     
           - type: picture-entity
-            name: Лобби
+            name: 'Лобби'
             camera_image: camera.lobby
             camera_view: live
             entity: sensor.time_date
             show_state: true
             
           - type: picture-entity
-            name: Лифты
+            name: 'Лифты'
             camera_image: camera.lobby_elevators
             camera_view: live
             entity: sensor.time_date
             show_state: true
 
       - type: grid
-        title: Паркинг
+        title: 'Паркинг'
         columns: 2
         square: false
         cards:
@@ -109,7 +109,7 @@ views:
               show_state: true
               
       - type: grid
-        title: Двор
+        title: 'Двор'
         columns: 2
         square: false
         cards:

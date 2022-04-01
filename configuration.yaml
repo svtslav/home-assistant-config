@@ -2,6 +2,7 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+# Базовая информация
 homeassistant:
     name: Home
     latitude: !secret home_latitude
@@ -10,24 +11,7 @@ homeassistant:
     time_zone: 'Europe/Moscow'
     unit_system: 'metric'
     currency: RUB
-    # Customization file
-    customize:
-        camera.main_entrance:
-            friendly_name: 'Вход в подъезд'
-        camera.lobby:
-            friendly_name: 'Лобби'
-        camera.lobby_elevators:
-            friendly_name: 'Лифты'
-        camera.parking:
-            friendly_name: 'Паркинг'
-        camera.parking_elevators:
-            friendly_name: 'Лифты (-2 этаж)'
-        camera.playground:
-            friendly_name: 'Детская площадка'
-        camera.courtyard_1_building:
-            friendly_name: '1 корпус (улица)'
-        camera.courtyard_3_building:
-            friendly_name: '3 корпус (улица)'
+    customize: !include_dir_merge_named customize/
 
 # Включение поддержки приложения
 mobile_app:
@@ -42,65 +26,18 @@ system_health:
 tts:
   - platform: google_translate
 
-# Manual UI config
+# Ручное управление интерфейсом
 lovelace:
     mode: yaml
 
+# Камеры наблюдения
 ffmpeg:
 stream:
-camera:
-  - platform: mjpeg
-    name: 'main_entrance'
-    mjpeg_url: !secret camera_main_entrance_url
+camera: !include cameras.yaml
 
-  - platform: mjpeg
-    name: 'lobby'
-    mjpeg_url: !secret camera_lobby_url
+# Датчики
+sensor: !include sensors.yaml
 
-  - platform: mjpeg
-    name: 'lobby_elevators'
-    mjpeg_url: !secret camera_lobby_elevators_url
-
-  - platform: mjpeg
-    name: 'parking'
-    mjpeg_url: !secret camera_parking_url
-
-  - platform: mjpeg
-    name: 'parking_elevators'
-    mjpeg_url: !secret camera_parking_elevators_url
-
-  - platform: mjpeg
-    name: 'playground'
-    mjpeg_url: !secret camera_playground_url
-
-  - platform: mjpeg
-    name: 'courtyard_1_building'
-    mjpeg_url: !secret camera_courtyard_1_building_url
-
-  - platform: mjpeg
-    name: 'courtyard_3_building'
-    mjpeg_url: !secret camera_courtyard_3_building_url
-    
-sensor:
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
-      - 'time_date'
-  - platform: systemmonitor
-    resources:
-      - type: processor_use
-      - type: last_boot
-      - type: memory_use_percent
-      - type: memory_use
-      - type: memory_free
-      - type: disk_use_percent
-        arg: /
-      - type: disk_use
-        arg: /
-      - type: disk_free
-        arg: /
-    
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

@@ -1,0 +1,14 @@
+        sensor.processor_use:
+            friendly_name: 'Загрузка CPU (%)'
+        sensor.memory_use_percent:
+            friendly_name: 'Загрузка RAM (%)'
+        sensor.memory_use:
+            friendly_name: 'RAM используется'
+        sensor.memory_free:
+            friendly_name: 'RAM свободно'
+        sensor.disk_use_percent:
+            friendly_name: 'Использование диска (%)'
+        sensor.disk_use:
+            friendly_name: 'Занято на диске'
+        sensor.disk_free:
+            friendly_name: 'Свободно на диске'

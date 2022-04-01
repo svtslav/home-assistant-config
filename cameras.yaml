@@ -1,0 +1,39 @@
+    # Вход в подъезд
+  - platform: mjpeg
+    name: 'main_entrance'
+    mjpeg_url: !secret camera_main_entrance_url
+
+    # Подъезд
+  - platform: mjpeg
+    name: 'lobby'
+    mjpeg_url: !secret camera_lobby_url
+
+    # Лифты в подъезде
+  - platform: mjpeg
+    name: 'lobby_elevators'
+    mjpeg_url: !secret camera_lobby_elevators_url
+
+    # Въезд в паркинг
+  - platform: mjpeg
+    name: 'parking'
+    mjpeg_url: !secret camera_parking_url
+
+    # Лифты в паркинге на -2 этаже
+  - platform: mjpeg
+    name: 'parking_elevators'
+    mjpeg_url: !secret camera_parking_elevators_url
+
+    # Детская площадка
+  - platform: mjpeg
+    name: 'playground'
+    mjpeg_url: !secret camera_playground_url
+
+    # Внутринний двор (1 корпус)
+  - platform: mjpeg
+    name: 'courtyard_1_building'
+    mjpeg_url: !secret camera_courtyard_1_building_url
+
+    # Внутринний двор (3 корпус)
+  - platform: mjpeg
+    name: 'courtyard_3_building'
+    mjpeg_url: !secret camera_courtyard_3_building_url
