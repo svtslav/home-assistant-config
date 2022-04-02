@@ -58,7 +58,34 @@ views:
               - type: sensor
                 entity: sensor.disk_free
                 name: 'Свободно'
+                
+  - title: 'Устройства'
+    id: devices
+    cards:
+      - type: grid
+        title: 'Проектор'
+        columns: 1
+        cards:
+          - type: media-control
+            entity: media_player.wanbo_projector_chromecast
 
+      - type: grid
+        title: 'Приложения'
+        columns: 3
+        cards:
+          - type: button
+            entity: script.projector_run_kinopoisk
+            name: 'Кинопоиск'
+            icon: mdi:video-minus
+            tap_action:
+                action: toggle
+                
+          - type: button
+            entity: script.projector_run_wink
+            name: 'Wink'
+            icon: mdi:video-minus
+            tap_action:
+                action: toggle
 
   - title: 'Камеры'
     id: cameras

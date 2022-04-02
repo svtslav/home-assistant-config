@@ -43,3 +43,5 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# Телевизоры, проекторы, колонки
+media_player: !include media_players.yaml
