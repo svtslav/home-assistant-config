@@ -1,27 +1,43 @@
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
-      - 'time_date'
+- platform: time_date
+  display_options:
+    - "time"
+    - "date"
+    - "time_date"
 
-  - platform: systemmonitor
-    resources:
-        # Использование процессора в %
-      - type: processor_use
-        # Дата и время последней перезагрузки
-      - type: last_boot
-        # Использование оперативной памяти в %
-      - type: memory_use_percent
-        # Используемая оперативная память в МБ
-      - type: memory_use
-        # Свободная оперативная память в МБ
-      - type: memory_free
-        # Занятое место на диске в %
-      - type: disk_use_percent
-        arg: /
-        # Занятое место на диске в ГБ
-      - type: disk_use
-        arg: /
-        # Свободное место на диске в ГБ
-      - type: disk_free
-        arg: /
+- platform: systemmonitor
+  resources:
+    # Использование процессора в %
+    - type: processor_use
+      # Дата и время последней перезагрузки
+    - type: last_boot
+      # Использование оперативной памяти в %
+    - type: memory_use_percent
+      # Используемая оперативная память в МБ
+    - type: memory_use
+      # Свободная оперативная память в МБ
+    - type: memory_free
+      # Занятое место на диске в %
+    - type: disk_use_percent
+      arg: /
+      # Занятое место на диске в ГБ
+    - type: disk_use
+      arg: /
+      # Свободное место на диске в ГБ
+    - type: disk_free
+      arg: /
+
+# Дата и время в Европейском формате
+- platform: template
+  sensors:
+    formated_date_time:
+      friendly_name: "Дата и время"
+      value_template: "{{ now().timestamp() | timestamp_custom('%d.%m.%y %H:%M') }}"
+      icon_template: mdi:calendar-clock
+
+# Дата в Европейском формате
+- platform: template
+  sensors:
+    formated_date:
+      friendly_name: "Дата"
+      value_template: "{{ now().timestamp() | timestamp_custom('%d.%m.%Y') }}"
+      icon_template: mdi:calendar-clock
