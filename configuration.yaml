@@ -37,6 +37,9 @@ camera: !include includes/cameras.yaml
 # Датчики
 sensor: !include includes/sensors.yaml
 
+# База данных
+recorder: !include includes/recorder.yaml
+
 group: !include includes/groups.yaml
 automation: !include includes/automations.yaml
 script: !include includes/scripts.yaml

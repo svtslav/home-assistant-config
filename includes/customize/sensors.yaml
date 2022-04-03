@@ -12,3 +12,5 @@ sensor.disk_use:
   friendly_name: "Занято на диске"
 sensor.disk_free:
   friendly_name: "Свободно на диске"
+sensor.maria_db_size:
+  friendly_name: "Размер Maria DB"

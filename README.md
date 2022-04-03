@@ -7,3 +7,4 @@
 - [File editor (configurator)](https://github.com/home-assistant/addons/tree/master/configurator)
 - [Terminal & SSH](https://github.com/home-assistant/addons/tree/master/ssh)
 - [Studio Code Server (VS Code)](https://github.com/hassio-addons/addon-vscode)
+- [Maria DB](https://github.com/home-assistant/addons/tree/master/mariadb)

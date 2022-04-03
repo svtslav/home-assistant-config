@@ -1,0 +1,3 @@
+db_url: !secret maria_db_url
+# Количество дней хранения информации
+purge_keep_days: 7

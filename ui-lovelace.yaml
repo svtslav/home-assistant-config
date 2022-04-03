@@ -15,6 +15,9 @@ views:
               green: 0
               yellow: 60
               red: 85
+          - type: sensor
+            entity: sensor.maria_db_size
+            name: "Размер БД"
 
       - type: vertical-stack
         cards:

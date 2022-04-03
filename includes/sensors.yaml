@@ -8,23 +8,32 @@
   resources:
     # Использование процессора в %
     - type: processor_use
-      # Дата и время последней перезагрузки
+    # Дата и время последней перезагрузки
     - type: last_boot
-      # Использование оперативной памяти в %
+    # Использование оперативной памяти в %
     - type: memory_use_percent
-      # Используемая оперативная память в МБ
+    # Используемая оперативная память в МБ
     - type: memory_use
-      # Свободная оперативная память в МБ
+    # Свободная оперативная память в МБ
     - type: memory_free
-      # Занятое место на диске в %
+    # Занятое место на диске в %
     - type: disk_use_percent
       arg: /
-      # Занятое место на диске в ГБ
+    # Занятое место на диске в ГБ
     - type: disk_use
       arg: /
-      # Свободное место на диске в ГБ
+    # Свободное место на диске в ГБ
     - type: disk_free
       arg: /
+
+# Размер базы данных
+- platform: sql
+  db_url: !secret maria_db_url
+  queries:
+    - name: maria_db_size
+      query: "SELECT table_schema 'database', Round(Sum(data_length + index_length) / (1024 * 1024), 2) 'value' FROM information_schema.tables WHERE table_schema='homeassistant' GROUP BY table_schema;'"
+      column: "value"
+      unit_of_measurement: MB
 
 # Дата и время в Европейском формате
 - platform: template
