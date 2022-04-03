@@ -3,9 +3,13 @@
 *.db-shm
 *.db-wal
 
+# Ignore Backups
+*_backup.json
+
 # Ignore Logs
 *.log
 *.log.*
+log
 
 # Ignore files created by IDE's
 .vscode

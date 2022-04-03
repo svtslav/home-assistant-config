@@ -1,0 +1,10 @@
+homeassistant: true
+mqtt:
+  server: mqtt://core-mosquitto
+serial:
+  port: /dev/ttyUSB0
+frontend:
+  port: 8099
+devices:
+  "0x00158d00039882bf":
+    friendly_name: xiaomi_contact_sensor_0x00158d00039882bf

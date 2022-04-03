@@ -63,30 +63,39 @@ views:
 
   - title: "Устройства"
     cards:
-      - type: grid
-        title: "Проектор"
-        columns: 1
+      - type: horizontal-stack
         cards:
-          - type: media-control
-            entity: media_player.wanbo_projector_chromecast
+          - type: glance
+            title: "Датчики"
+            entities:
+              - binary_sensor.xiaomi_contact_sensor_0x00158d00039882bf1_contact
 
-      - type: grid
-        title: "Приложения"
-        columns: 3
+      - type: horizontal-stack
         cards:
-          - type: button
-            entity: script.projector_run_kinopoisk
-            name: "Кинопоиск"
-            icon: mdi:video-minus
-            tap_action:
-              action: toggle
+          - type: grid
+            title: "Проектор"
+            columns: 1
+            cards:
+              - type: media-control
+                entity: media_player.wanbo_projector_chromecast
 
-          - type: button
-            entity: script.projector_run_wink
-            name: "Wink"
-            icon: mdi:video-minus
-            tap_action:
-              action: toggle
+          - type: grid
+            title: "Приложения"
+            columns: 2
+            cards:
+              - type: button
+                entity: script.projector_run_kinopoisk
+                name: "Кинопоиск"
+                icon: mdi:video-minus
+                tap_action:
+                  action: toggle
+
+              - type: button
+                entity: script.projector_run_wink
+                name: "Wink"
+                icon: mdi:video-minus
+                tap_action:
+                  action: toggle
 
   - title: "Камеры"
     cards:

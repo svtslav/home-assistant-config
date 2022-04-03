@@ -14,3 +14,8 @@ sensor.disk_free:
   friendly_name: "Свободно на диске"
 sensor.maria_db_size:
   friendly_name: "Размер Maria DB"
+
+# Датчики
+binary_sensor.xiaomi_contact_sensor_0x00158d00039882bf1_contact:
+  friendly_name: "Датчик касания"
+  device_class: opening
