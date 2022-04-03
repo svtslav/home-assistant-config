@@ -1,171 +1,166 @@
-title: 'Home Assistant'
+title: "Home Assistant"
 views:
-  - title: 'Главная'
-    id: mian
+  - title: "Главная"
     icon: mdi:memory
     cards:
       - type: horizontal-stack
         cards:
           - type: gauge
-            name: 'Загрузка CPU'
-            unit: '%'
+            name: "Загрузка CPU"
+            unit: "%"
             min: 0
             max: 100
             entity: sensor.processor_use
             severity:
-                green: 0
-                yellow: 60
-                red: 85
-                
+              green: 0
+              yellow: 60
+              red: 85
+
       - type: vertical-stack
         cards:
           - type: gauge
-            name: 'Загрузка RAM'
-            unit: '%'
+            name: "Загрузка RAM"
+            unit: "%"
             min: 0
             max: 100
             entity: sensor.memory_use_percent
             severity:
-                green: 0
-                yellow: 60
-                red: 85
+              green: 0
+              yellow: 60
+              red: 85
           - type: horizontal-stack
             cards:
               - type: sensor
                 entity: sensor.memory_use
-                name: 'Используется'
+                name: "Используется"
               - type: sensor
                 entity: sensor.memory_free
-                name: 'Свободно'
-                
+                name: "Свободно"
+
       - type: vertical-stack
         cards:
           - type: gauge
-            name: 'Загрузка диска'
-            unit: '%'
+            name: "Загрузка диска"
+            unit: "%"
             min: 0
             max: 100
             entity: sensor.disk_use_percent
             severity:
-                green: 0
-                yellow: 60
-                red: 85
+              green: 0
+              yellow: 60
+              red: 85
           - type: horizontal-stack
             cards:
               - type: sensor
                 entity: sensor.disk_use
-                name: 'Занято'
+                name: "Занято"
               - type: sensor
                 entity: sensor.disk_free
-                name: 'Свободно'
-                
-  - title: 'Устройства'
-    id: devices
+                name: "Свободно"
+
+  - title: "Устройства"
     cards:
       - type: grid
-        title: 'Проектор'
+        title: "Проектор"
         columns: 1
         cards:
           - type: media-control
             entity: media_player.wanbo_projector_chromecast
 
       - type: grid
-        title: 'Приложения'
+        title: "Приложения"
         columns: 3
         cards:
           - type: button
             entity: script.projector_run_kinopoisk
-            name: 'Кинопоиск'
+            name: "Кинопоиск"
             icon: mdi:video-minus
             tap_action:
-                action: toggle
-                
+              action: toggle
+
           - type: button
             entity: script.projector_run_wink
-            name: 'Wink'
+            name: "Wink"
             icon: mdi:video-minus
             tap_action:
-                action: toggle
+              action: toggle
 
-  - title: 'Камеры'
-    id: cameras
+  - title: "Камеры"
     cards:
       - type: grid
-        title: 'Подъезд'
+        title: "Подъезд"
         columns: 2
         square: false
         cards:
           - type: picture-entity
-            name: 'Вход в подъезд'
+            name: "Вход в подъезд"
             camera_image: camera.main_entrance
             camera_view: live
             entity: camera.main_entrance
             show_state: false
-    
+
           - type: picture-entity
-            name: 'Лобби'
+            name: "Лобби"
             camera_image: camera.lobby
             camera_view: live
             entity: camera.lobby
             show_state: false
-            
+
           - type: picture-entity
-            name: 'Лифты'
+            name: "Лифты"
             camera_image: camera.lobby_elevators
             camera_view: live
             entity: camera.lobby_elevators
             show_state: false
 
       - type: grid
-        title: 'Паркинг'
+        title: "Паркинг"
         columns: 2
         square: false
         cards:
-            - type: picture-entity
-              name: 'Лифты (-2 этаж)'
-              camera_image: camera.parking_elevators
-              camera_view: auto
-              entity: camera.parking_elevators
-              show_state: false
-              
-            - type: picture-entity
-              name: 'Лифты (-2 этаж)'
-              camera_image: camera.parking_elevators
-              camera_view: auto
-              entity: camera.parking_elevators
-              show_state: false
-              
-            - type: picture-entity
-              name: Паркинг
-              camera_image: camera.parking
-              camera_view: auto
-              entity: camera.parking
-              show_state: false
-              
+          - type: picture-entity
+            name: "Лифты (-2 этаж)"
+            camera_image: camera.parking_elevators
+            camera_view: auto
+            entity: camera.parking_elevators
+            show_state: false
+
+          - type: picture-entity
+            name: "Лифты (-2 этаж)"
+            camera_image: camera.parking_elevators
+            camera_view: auto
+            entity: camera.parking_elevators
+            show_state: false
+
+          - type: picture-entity
+            name: Паркинг
+            camera_image: camera.parking
+            camera_view: auto
+            entity: camera.parking
+            show_state: false
+
       - type: grid
-        title: 'Двор'
+        title: "Двор"
         columns: 2
         square: false
         cards:
-          
-        - type: picture-entity
-          name: '3 корпус'
-          camera_image: camera.courtyard_3_building
-          camera_view: auto
-          entity: camera.courtyard_3_building
-          show_state: false
-          
-        - type: picture-entity
-          name: '1 корпус'
-          camera_image: camera.courtyard_1_building
-          camera_view: auto
-          entity: camera.courtyard_1_building
-          show_state: false
-          
-        - type: picture-entity
-          name: 'Детская площадка'
-          camera_image: camera.playground
-          camera_view: auto
-          entity: camera.playground
-          show_state: false
-          
+          - type: picture-entity
+            name: "3 корпус"
+            camera_image: camera.courtyard_3_building
+            camera_view: auto
+            entity: camera.courtyard_3_building
+            show_state: false
+
+          - type: picture-entity
+            name: "1 корпус"
+            camera_image: camera.courtyard_1_building
+            camera_view: auto
+            entity: camera.courtyard_1_building
+            show_state: false
+
+          - type: picture-entity
+            name: "Детская площадка"
+            camera_image: camera.playground
+            camera_view: auto
+            entity: camera.playground
+            show_state: false
