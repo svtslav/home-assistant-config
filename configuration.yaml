@@ -10,7 +10,7 @@ homeassistant:
   time_zone: "Europe/Moscow"
   unit_system: "metric"
   currency: RUB
-  customize: !include_dir_merge_named customize/
+  customize: !include_dir_merge_named includes/customize/
 
 # Включение поддержки приложения
 mobile_app:
