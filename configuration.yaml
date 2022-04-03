@@ -1,17 +1,16 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
 # Базовая информация
 homeassistant:
-    name: Home
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    elevation: 150
-    time_zone: 'Europe/Moscow'
-    unit_system: 'metric'
-    currency: RUB
-    customize: !include_dir_merge_named customize/
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 150
+  time_zone: "Europe/Moscow"
+  unit_system: "metric"
+  currency: RUB
+  customize: !include_dir_merge_named customize/
 
 # Включение поддержки приложения
 mobile_app:
@@ -28,20 +27,20 @@ tts:
 
 # Ручное управление интерфейсом
 lovelace:
-    mode: yaml
+  mode: yaml
 
 # Камеры наблюдения
 ffmpeg:
 stream:
-camera: !include cameras.yaml
+camera: !include includes/cameras.yaml
 
 # Датчики
-sensor: !include sensors.yaml
+sensor: !include includes/sensors.yaml
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+group: !include includes/groups.yaml
+automation: !include includes/automations.yaml
+script: !include includes/scripts.yaml
+scene: !include includes/scenes.yaml
 
 # Телевизоры, проекторы, колонки
-media_player: !include media_players.yaml
+media_player: !include includes/media_players.yaml

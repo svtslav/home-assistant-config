@@ -1,0 +1,4 @@
+# Chromecast с Google TV в проекторе
+- platform: androidtv
+  name: wanbo_projector_chromecast
+  host: !secret wanbo_projector_chromecast_host
