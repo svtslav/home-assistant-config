@@ -1,9 +1,4 @@
-- platform: time_date
-  display_options:
-    - "time"
-    - "date"
-    - "time_date"
-
+# Мониторинг системы
 - platform: systemmonitor
   resources:
     # Использование процессора в %
@@ -42,6 +37,13 @@
       friendly_name: "Дата и время"
       value_template: "{{ now().timestamp() | timestamp_custom('%d.%m.%y %H:%M') }}"
       icon_template: mdi:calendar-clock
+
+# Дата и время
+- platform: time_date
+  display_options:
+    - "time"
+    - "date"
+    - "time_date"
 
 # Дата в Европейском формате
 - platform: template
