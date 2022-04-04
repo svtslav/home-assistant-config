@@ -20,3 +20,4 @@
 - MQTT (Mosquitto Broker)
 - Yeelight
 - AsusWRT
+- Spotify

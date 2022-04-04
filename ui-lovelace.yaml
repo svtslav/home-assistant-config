@@ -98,6 +98,8 @@ views:
             cards:
               - type: media-control
                 entity: media_player.wanbo_projector_chromecast
+              - type: media-control
+                entity: media_player.spotify_svtslav
 
           - type: grid
             title: "Приложения"
