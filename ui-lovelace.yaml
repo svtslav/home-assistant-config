@@ -3,63 +3,75 @@ views:
   - title: "Главная"
     icon: mdi:memory
     cards:
-      - type: horizontal-stack
-        cards:
-          - type: gauge
-            name: "Загрузка CPU"
-            unit: "%"
-            min: 0
-            max: 100
-            entity: sensor.processor_use
-            severity:
-              green: 0
-              yellow: 60
-              red: 85
-          - type: sensor
-            entity: sensor.maria_db_size
-            name: "Размер БД"
-
       - type: vertical-stack
         cards:
-          - type: gauge
-            name: "Загрузка RAM"
-            unit: "%"
-            min: 0
-            max: 100
-            entity: sensor.memory_use_percent
-            severity:
-              green: 0
-              yellow: 60
-              red: 85
           - type: horizontal-stack
             cards:
+              - type: gauge
+                name: "Загрузка CPU"
+                unit: "%"
+                min: 0
+                max: 100
+                entity: sensor.processor_use
+                severity:
+                  green: 0
+                  yellow: 60
+                  red: 85
               - type: sensor
-                entity: sensor.memory_use
-                name: "Используется"
-              - type: sensor
-                entity: sensor.memory_free
-                name: "Свободно"
-
+                entity: sensor.maria_db_size
+                name: "Размер БД"
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: "Входящая скорость"
+                unit: "Мбит/сек"
+                entity: sensor.asuswrt_download_speed
+              - type: gauge
+                name: "Исходящая скорость"
+                unit: "Мбит/сек"
+                entity: sensor.asuswrt_upload_speed
       - type: vertical-stack
         cards:
-          - type: gauge
-            name: "Загрузка диска"
-            unit: "%"
-            min: 0
-            max: 100
-            entity: sensor.disk_use_percent
-            severity:
-              green: 0
-              yellow: 60
-              red: 85
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
-              - type: sensor
-                entity: sensor.disk_use
-                name: "Занято"
-              - type: sensor
-                entity: sensor.disk_free
-                name: "Свободно"
+              - type: gauge
+                name: "Загрузка RAM"
+                unit: "%"
+                min: 0
+                max: 100
+                entity: sensor.memory_use_percent
+                severity:
+                  green: 0
+                  yellow: 60
+                  red: 85
+              - type: horizontal-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.memory_use
+                    name: "Используется"
+                  - type: sensor
+                    entity: sensor.memory_free
+                    name: "Свободно"
+          - type: vertical-stack
+            cards:
+              - type: gauge
+                name: "Загрузка диска"
+                unit: "%"
+                min: 0
+                max: 100
+                entity: sensor.disk_use_percent
+                severity:
+                  green: 0
+                  yellow: 60
+                  red: 85
+              - type: horizontal-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.disk_use
+                    name: "Занято"
+                  - type: sensor
+                    entity: sensor.disk_free
+                    name: "Свободно"
 
   - title: "Устройства"
     cards:

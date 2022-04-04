@@ -19,3 +19,9 @@ sensor.maria_db_size:
 binary_sensor.xiaomi_contact_sensor_0x00158d00039882bf1_contact:
   friendly_name: "Датчик касания"
   device_class: opening
+
+# Роутер Asus
+sensor.asuswrt_upload_speed:
+  friendly_name: "Исходящая скорость (Мбит/сек)"
+sensor.asuswrt_download_speed:
+  friendly_name: "Скорость загрузки (Мбит/сек)"

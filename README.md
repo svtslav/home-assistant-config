@@ -1,11 +1,12 @@
 ## Устройства и датчики
 1. Raspberry Pi 4 Model B 8GB
-2. [Chromecast с Google TV](https://store.google.com/us/product/chromecast_google_tv)
-3. Камеры видеонаболюдения (mjpeg) из приложения [Домиленд](https://domyland.ru/) от застройщика
-4. Sonoff Zigbee 3.0 USB Dongle Plus
-5. Xiaomi Door and Window Sensor (MCCGQ01LM)
-6. Yeelight LED Bulb Color (YLDP06YL)
-7. Yeelight LED Bulb 1S Color (YLDP13YL)
+2. Роутер Asus RT-AC59U
+3. [Chromecast с Google TV](https://store.google.com/us/product/chromecast_google_tv)
+4. Камеры видеонаболюдения (mjpeg) из приложения [Домиленд](https://domyland.ru/) от застройщика
+5. Sonoff Zigbee 3.0 USB Dongle Plus
+6. Xiaomi Door and Window Sensor (MCCGQ01LM)
+7. Yeelight LED Bulb Color (YLDP06YL)
+8. Yeelight LED Bulb 1S Color (YLDP13YL)
 
 ## Дополнения (Add-Ons)
 - [File editor (configurator)](https://github.com/home-assistant/addons/tree/master/configurator)
@@ -18,3 +19,4 @@
 ## Интеграции
 - MQTT (Mosquitto Broker)
 - Yeelight
+- AsusWRT

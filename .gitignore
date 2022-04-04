@@ -24,3 +24,6 @@ log
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+
+# SSH keys
+ssh

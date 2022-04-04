@@ -21,6 +21,19 @@ sun:
 # API для предоставления информации о системе и ее компонентах
 system_health:
 
+# Роутер Asus
+asuswrt:
+  host: !secret asus_router_ip
+  protocol: ssh
+  username: !secret asus_router_username
+  ssh_key: !secret asus_router_id_rsa
+  mode: router
+  interface: vlan2
+  sensors:
+    - devices
+    - upload_speed
+    - download_speed
+
 # Text to speech
 tts:
   - platform: google_translate
