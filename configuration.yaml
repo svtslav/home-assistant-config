@@ -47,3 +47,6 @@ scene: !include includes/scenes.yaml
 
 # Телевизоры, проекторы, колонки
 media_player: !include includes/media_players.yaml
+
+# Освещение Yeelight
+yeelight: !include includes/yeelight.yaml

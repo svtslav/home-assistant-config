@@ -1,0 +1,8 @@
+devices:
+  !secret table_lamp_ip:
+    name: table_lamp
+    transition: 1000
+
+  !secret floor_lamp_ip:
+    name: floor_lamp
+    transition: 1000

@@ -4,6 +4,8 @@
 3. Камеры видеонаболюдения (mjpeg) из приложения [Домиленд](https://domyland.ru/) от застройщика
 4. Sonoff Zigbee 3.0 USB Dongle Plus
 5. Xiaomi Door and Window Sensor (MCCGQ01LM)
+6. Yeelight LED Bulb Color (YLDP06YL)
+7. Yeelight LED Bulb 1S Color (YLDP13YL)
 
 ## Дополнения (Add-Ons)
 - [File editor (configurator)](https://github.com/home-assistant/addons/tree/master/configurator)
@@ -15,3 +17,4 @@
 
 ## Интеграции
 - MQTT (Mosquitto Broker)
+- Yeelight

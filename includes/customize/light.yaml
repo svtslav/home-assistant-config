@@ -1,0 +1,5 @@
+# Yeelight
+light.table_lamp:
+  friendly_name: "Настольная лампа"
+light.floor_lamp:
+  friendly_name: "Торшер"
