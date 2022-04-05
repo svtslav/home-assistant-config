@@ -194,3 +194,99 @@
       icon_template: mdi:radiator
       value_template: "{{ state_attr('sensor.domyland_heating', 'delta1') | float }}"
       unit_of_measurement: "GCal"
+
+# Получение показаний воды
+- platform: rest
+  name: domyland_water
+  resource: !secret domyland_water_url
+  method: GET
+  headers:
+    Authorization: !secret domyland_tooken
+    AppName: !secret domyland_app_name
+    AppVersion: !secret domyland_app_version
+    buildingId: !secret domyland_building_id
+    placeId: !secret domyland_place_id
+  verify_ssl: false
+  value_template: "{{ value_json['success'] }}"
+  json_attributes_path: "$.['data']"
+  json_attributes:
+    - items
+  # 12 часов
+  scan_interval: 43200
+
+  # Датчики показаний воды
+- platform: template
+  sensors:
+    # Холодная вода
+    domyland_water_cold_gauge_number:
+      friendly_name: "Номер счётчика"
+      icon_template: mdi:water-pump
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].meteringDeviceNumber }}"
+    domyland_water_cold_last_submit:
+      friendly_name: "Дата последней передачи показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].submittedAt }}"
+    domyland_water_cold_last_check:
+      friendly_name: "Дата последнего обновления показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].createdAt }}"
+    domyland_water_cold_last_calibration_date:
+      friendly_name: "Дата последней калибровки счётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].lastCalibrationDate }}"
+    domyland_water_cold_next_calibration_date:
+      friendly_name: "Дата следующей калибровки счётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].meteringDeviceNextCalibrationDate }}"
+    domyland_water_cold_value:
+      friendly_name: "Холодная вода (показания)"
+      icon_template: mdi:water-pump
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].value1 | float }}"
+      unit_of_measurement: "m³"
+    domyland_water_cold_delta:
+      friendly_name: "Холодная вода (изменение)"
+      icon_template: mdi:water-pump
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].delta1 | float }}"
+      unit_of_measurement: "m³"
+    # Горячая вода
+    domyland_water_hot_gauge_number:
+      friendly_name: "Номер счётчика"
+      icon_template: mdi:water-pump
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].meteringDeviceNumber }}"
+    domyland_water_hot_last_submit:
+      friendly_name: "Дата последней передачи показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].submittedAt }}"
+    domyland_water_hot_last_check:
+      friendly_name: "Дата последнего обновления показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].createdAt }}"
+    domyland_water_hot_last_calibration_date:
+      friendly_name: "Дата последней калибровки счётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].lastCalibrationDate }}"
+    domyland_water_hot_next_calibration_date:
+      friendly_name: "Дата следующей калибровки счётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].meteringDeviceNextCalibrationDate }}"
+    domyland_water_hot_value:
+      friendly_name: "Горячая вода (показания)"
+      icon_template: mdi:water-pump
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].value1 | float }}"
+      unit_of_measurement: "m³"
+    domyland_water_hot_delta:
+      friendly_name: "Горячая вода (изменение)"
+      icon_template: mdi:water-pump
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].delta1 | float }}"
+      unit_of_measurement: "m³"
+    # Водоотведение
+    domyland_water_drainage_value:
+      friendly_name: "Водоотведение (показания)"
+      icon_template: mdi:water-pump
+      value_template: "{{ (states.sensor.domyland_water.attributes['items'][0].value1 | float) + (states.sensor.domyland_water.attributes['items'][1].value1 | float) }}"
+      unit_of_measurement: "m³"
+    domyland_water_drainage_delta:
+      friendly_name: "Водоотведение (изменение)"
+      icon_template: mdi:water-pump
+      value_template: "{{ (states.sensor.domyland_water.attributes['items'][0].delta1 | float) + (states.sensor.domyland_water.attributes['items'][1].delta1 | float) }}"
+      unit_of_measurement: "m³"
