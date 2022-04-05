@@ -77,7 +77,8 @@
     - value3
     - delta3
   name: domyland_electricity
-  scan_interval: 3600
+  # 12 часов
+  scan_interval: 43200
 
 # Датчики показаний электросчётчика
 - platform: template
@@ -96,30 +97,30 @@
     domyland_electricity_t1_value:
       friendly_name: "Электричество T1 (пик)"
       icon_template: mdi:meter-electric-outline
-      value_template: "{{ state_attr('sensor.domyland_electricity', 'value1') }}"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'value1') | float }}"
       unit_of_measurement: "kWH"
     domyland_electricity_t1_delta:
       friendly_name: "Электричество T1 (пик) изменение"
       icon_template: mdi:meter-electric-outline
-      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta1') }}"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta1') | float }}"
       unit_of_measurement: "kWH"
     domyland_electricity_t2_value:
       friendly_name: "Электричество T2 (ночь)"
       icon_template: mdi:meter-electric-outline
-      value_template: "{{ state_attr('sensor.domyland_electricity', 'value2') }}"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'value2') | float }}"
       unit_of_measurement: "kWH"
     domyland_electricity_t2_delta:
       friendly_name: "Электричество T2 (ночь) изменение"
       icon_template: mdi:meter-electric-outline
-      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta2') }}"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta2') | float }}"
       unit_of_measurement: "kWH"
     domyland_electricity_t3_value:
       friendly_name: "Электричество T3 (п/пик)"
       icon_template: mdi:meter-electric-outline
-      value_template: "{{ state_attr('sensor.domyland_electricity', 'value3') }}"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'value3') | float }}"
       unit_of_measurement: "kWH"
     domyland_electricity_t3_delta:
       friendly_name: "Электричество T3 (п/пик) изменение"
       icon_template: mdi:meter-electric-outline
-      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta3') }}"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta3') | float }}"
       unit_of_measurement: "kWH"
