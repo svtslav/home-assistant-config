@@ -37,3 +37,8 @@
 - platform: mjpeg
   name: "courtyard_3_building"
   mjpeg_url: !secret camera_courtyard_3_building_url
+
+  # Домофон в подъезде
+- platform: mjpeg
+  name: "intercom_lobby_entrance"
+  mjpeg_url: !secret camera_intercom_lobby_entrance_url

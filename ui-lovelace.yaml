@@ -134,6 +134,13 @@ views:
             show_state: false
 
           - type: picture-entity
+            name: "Домофон (подъезд)"
+            camera_image: camera.intercom_lobby_entrance
+            camera_view: live
+            entity: camera.intercom_lobby_entrance
+            show_state: false
+
+          - type: picture-entity
             name: "Лобби"
             camera_image: camera.lobby
             camera_view: live
