@@ -52,3 +52,74 @@
       friendly_name: "Дата"
       value_template: "{{ now().timestamp() | timestamp_custom('%d.%m.%Y') }}"
       icon_template: mdi:calendar-clock
+
+# Получение показаний электросчётчика
+- platform: rest
+  resource: !secret domyland_electricity_url
+  method: GET
+  headers:
+    Authorization: !secret domyland_tooken
+    AppName: !secret domyland_app_name
+    AppVersion: !secret domyland_app_version
+    buildingId: !secret domyland_building_id
+    placeId: !secret domyland_place_id
+  verify_ssl: false
+  value_template: "{{ value_json['success'] }}"
+  json_attributes_path: "$.['data']['items'][0]"
+  json_attributes:
+    - meteringDeviceNumber
+    - submittedAt
+    - createdAt
+    - value1
+    - delta1
+    - value2
+    - delta2
+    - value3
+    - delta3
+  name: domyland_electricity
+  scan_interval: 3600
+
+# Датчики показаний электросчётчика
+- platform: template
+  sensors:
+    domyland_electricity_gauge_number:
+      friendly_name: "Номер электросчётчика"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'meteringDeviceNumber') }}"
+    domyland_electricity_last_submit:
+      friendly_name: "Дата последней передачи показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'submittedAt') }}"
+    domyland_electricity_last_check:
+      friendly_name: "Дата последнего обновления показаний"
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'createdAt') }}"
+    domyland_electricity_t1_value:
+      friendly_name: "Электричество T1 (пик)"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'value1') }}"
+      unit_of_measurement: "kWH"
+    domyland_electricity_t1_delta:
+      friendly_name: "Электричество T1 (пик) изменение"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta1') }}"
+      unit_of_measurement: "kWH"
+    domyland_electricity_t2_value:
+      friendly_name: "Электричество T2 (ночь)"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'value2') }}"
+      unit_of_measurement: "kWH"
+    domyland_electricity_t2_delta:
+      friendly_name: "Электричество T2 (ночь) изменение"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta2') }}"
+      unit_of_measurement: "kWH"
+    domyland_electricity_t3_value:
+      friendly_name: "Электричество T3 (п/пик)"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'value3') }}"
+      unit_of_measurement: "kWH"
+    domyland_electricity_t3_delta:
+      friendly_name: "Электричество T3 (п/пик) изменение"
+      icon_template: mdi:meter-electric-outline
+      value_template: "{{ state_attr('sensor.domyland_electricity', 'delta3') }}"
+      unit_of_measurement: "kWH"

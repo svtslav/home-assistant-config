@@ -205,3 +205,40 @@ views:
             camera_view: auto
             entity: camera.playground
             show_state: false
+
+  - title: "Счётчики"
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: gauge
+                    name: "T1 (пик)"
+                    unit: "КВт/ч"
+                    entity: sensor.domyland_electricity_t1_value
+                  - type: sensor
+                    name: "Расход T1 (пик)"
+                    unit: "КВт/ч"
+                    entity: sensor.domyland_electricity_t1_delta
+          - type: vertical-stack
+            cards:
+              - type: gauge
+                name: "T2 (ночь)"
+                unit: "КВт/ч"
+                entity: sensor.domyland_electricity_t2_value
+              - type: sensor
+                name: "Расход T2 (ночь)"
+                unit: "КВт/ч"
+                entity: sensor.domyland_electricity_t2_delta
+          - type: vertical-stack
+            cards:
+              - type: gauge
+                name: "T3 (п/пик)"
+                unit: "КВт/ч"
+                entity: sensor.domyland_electricity_t3_value
+              - type: sensor
+                name: "Расход T3 (п/пик)"
+                unit: "КВт/ч"
+                entity: sensor.domyland_electricity_t3_delta
