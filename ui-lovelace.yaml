@@ -167,13 +167,6 @@ views:
             show_state: false
 
           - type: picture-entity
-            name: "Лифты (-2 этаж)"
-            camera_image: camera.parking_elevators
-            camera_view: auto
-            entity: camera.parking_elevators
-            show_state: false
-
-          - type: picture-entity
             name: Паркинг
             camera_image: camera.parking
             camera_view: auto
