@@ -1,0 +1,64 @@
+# Получение показаний теплосчётчиков
+- platform: rest
+  name: domyland_heating
+  resource: !secret domyland_heating_url
+  method: GET
+  headers:
+    Authorization: !secret domyland_tooken
+    AppName: !secret domyland_app_name
+    AppVersion: !secret domyland_app_version
+    buildingId: !secret domyland_building_id
+    placeId: !secret domyland_place_id
+  verify_ssl: false
+  value_template: "{{ value_json['success'] }}"
+  json_attributes_path: "$.['data']['items'][0]"
+  json_attributes:
+    - meteringDeviceNumber
+    - submittedAt
+    - createdAt
+    - lastCalibrationDate
+    - meteringDeviceNextCalibrationDate
+    - value1
+    - delta1
+  # 12 часов
+  scan_interval: 43200
+
+  # Датчики показаний теплосчётчиков
+- platform: template
+  sensors:
+    domyland_heating_gauge_number:
+      friendly_name: "Номер теплосчётчика"
+      icon_template: mdi:radiator
+      value_template: "{{ states.sensor.domyland_heating.attributes.meteringDeviceNumber }}"
+
+    domyland_heating_last_submit:
+      friendly_name: "Дата последней передачи показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_heating.attributes.submittedAt }}"
+
+    domyland_heating_last_check:
+      friendly_name: "Дата последнего обновления показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_heating.attributes.createdAt }}"
+
+    domyland_heating_last_calibration_date:
+      friendly_name: "Дата последней калибровки теплосчётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_heating.attributes.lastCalibrationDate }}"
+
+    domyland_heating_next_calibration_date:
+      friendly_name: "Дата следующей калибровки теплосчётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{states.sensor.domyland_heating.attributes.meteringDeviceNextCalibrationDate }}"
+
+    domyland_heating_value:
+      friendly_name: "Отопление"
+      icon_template: mdi:radiator
+      value_template: "{{ states.sensor.domyland_heating.attributes.value1 | float }}"
+      unit_of_measurement: "GCal"
+
+    domyland_heating_delta:
+      friendly_name: "Отопление (изменение)"
+      icon_template: mdi:radiator
+      value_template: "{{ states.sensor.domyland_heating.attributes.delta1 | float }}"
+      unit_of_measurement: "GCal"

@@ -53,7 +53,7 @@ stream:
 camera: !include includes/cameras.yaml
 
 # Датчики
-sensor: !include includes/sensors.yaml
+sensor: !include_dir_merge_list includes/sensors/
 
 # База данных
 recorder: !include includes/recorder.yaml

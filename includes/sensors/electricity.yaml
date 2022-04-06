@@ -1,0 +1,92 @@
+# Получение показаний электросчётчика
+- platform: rest
+  resource: !secret domyland_electricity_url
+  method: GET
+  headers:
+    Authorization: !secret domyland_tooken
+    AppName: !secret domyland_app_name
+    AppVersion: !secret domyland_app_version
+    buildingId: !secret domyland_building_id
+    placeId: !secret domyland_place_id
+  verify_ssl: false
+  value_template: "{{ value_json['success'] }}"
+  json_attributes_path: "$.['data']['items'][0]"
+  json_attributes:
+    - meteringDeviceNumber
+    - submittedAt
+    - createdAt
+    - lastCalibrationDate
+    - meteringDeviceNextCalibrationDate
+    - value1
+    - delta1
+    - value2
+    - delta2
+    - value3
+    - delta3
+  name: domyland_electricity
+  # 12 часов
+  scan_interval: 43200
+
+# Датчики показаний электросчётчика
+- platform: template
+  sensors:
+    domyland_electricity_gauge_number:
+      friendly_name: "Номер электросчётчика"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.meteringDeviceNumber }}"
+
+    domyland_electricity_last_submit:
+      friendly_name: "Дата последней передачи показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_electricity.attributes.submittedAt }}"
+
+    domyland_electricity_last_check:
+      friendly_name: "Дата последнего обновления показаний"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_electricity.attributes.createdAt }}"
+
+    domyland_heating_last_calibration_date:
+      friendly_name: "Дата последней калибровки электросчётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_electricity.attributes.lastCalibrationDate }}"
+
+    domyland_heating_next_calibration_date:
+      friendly_name: "Дата следующей калибровки электросчётчика"
+      icon_template: mdi:calendar-clock
+      value_template: "{{ states.sensor.domyland_electricity.attributes.meteringDeviceNextCalibrationDate }}"
+
+    domyland_electricity_t1_value:
+      friendly_name: "Электричество T1 (пик)"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.value1 | float }}"
+      unit_of_measurement: "kWH"
+
+    domyland_electricity_t1_delta:
+      friendly_name: "Электричество T1 (пик) изменение"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.delta1 | float }}"
+      unit_of_measurement: "kWH"
+
+    domyland_electricity_t2_value:
+      friendly_name: "Электричество T2 (ночь)"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.value2 | float }}"
+      unit_of_measurement: "kWH"
+
+    domyland_electricity_t2_delta:
+      friendly_name: "Электричество T2 (ночь) изменение"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.delta2 | float }}"
+      unit_of_measurement: "kWH"
+
+    domyland_electricity_t3_value:
+      friendly_name: "Электричество T3 (п/пик)"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.value3 | float }}"
+      unit_of_measurement: "kWH"
+
+    domyland_electricity_t3_delta:
+      friendly_name: "Электричество T3 (п/пик) изменение"
+      icon_template: mdi:transmission-tower
+      value_template: "{{ states.sensor.domyland_electricity.attributes.delta3 | float }}"
+      unit_of_measurement: "kWH"

@@ -25,3 +25,15 @@ sensor.asuswrt_upload_speed:
   friendly_name: "Исходящая скорость (Мбит/сек)"
 sensor.asuswrt_download_speed:
   friendly_name: "Скорость загрузки (Мбит/сек)"
+
+# Показания электросчётчиков
+sensor.domyland_electricity:
+  friendly_name: "Электричество"
+
+# Показания теплосчётчиков
+sensor.domyland_heating:
+  friendly_name: "Отопление"
+
+# Показания водосчётчиков
+sensor.domyland_water:
+  friendly_name: "Вода"
