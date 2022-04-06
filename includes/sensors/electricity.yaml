@@ -45,12 +45,12 @@
       icon_template: mdi:calendar-clock
       value_template: "{{ states.sensor.domyland_electricity.attributes.createdAt }}"
 
-    domyland_heating_last_calibration_date:
+    domyland_electricity_last_calibration_date:
       friendly_name: "Дата последней калибровки электросчётчика"
       icon_template: mdi:calendar-clock
       value_template: "{{ states.sensor.domyland_electricity.attributes.lastCalibrationDate }}"
 
-    domyland_heating_next_calibration_date:
+    domyland_electricity_next_calibration_date:
       friendly_name: "Дата следующей калибровки электросчётчика"
       icon_template: mdi:calendar-clock
       value_template: "{{ states.sensor.domyland_electricity.attributes.meteringDeviceNextCalibrationDate }}"
