@@ -223,6 +223,10 @@ views:
                     name: "Расход T1 (пик)"
                     unit: "КВт/ч"
                     entity: sensor.domyland_electricity_t1_delta
+                  - type: sensor
+                    name: "Итого T1 (пик)"
+                    unit: "руб."
+                    entity: sensor.domyland_electricity_t1_total
               - type: vertical-stack
                 cards:
                   - type: gauge
@@ -233,6 +237,10 @@ views:
                     name: "Расход T2 (ночь)"
                     unit: "КВт/ч"
                     entity: sensor.domyland_electricity_t2_delta
+                  - type: sensor
+                    name: "Итого T2 (ночь)"
+                    unit: "руб."
+                    entity: sensor.domyland_electricity_t2_total
               - type: vertical-stack
                 cards:
                   - type: gauge
@@ -243,12 +251,20 @@ views:
                     name: "Расход T3 (п/пик)"
                     unit: "КВт/ч"
                     entity: sensor.domyland_electricity_t3_delta
+                  - type: sensor
+                    name: "Итого T3 (п/пик)"
+                    unit: "руб."
+                    entity: sensor.domyland_electricity_t3_total
           - type: horizontal-stack
             cards:
               - type: entities
                 entities:
                   - sensor.domyland_electricity_last_check
                   - sensor.domyland_electricity_last_submit
+                  - sensor.domyland_electricity_t1_tariff
+                  - sensor.domyland_electricity_t2_tariff
+                  - sensor.domyland_electricity_t3_tariff
+                  - sensor.domyland_electricity_total
 
       - type: vertical-stack
         cards:
@@ -272,12 +288,18 @@ views:
                     name: "Расход"
                     unit: "ГКал"
                     entity: sensor.domyland_heating_delta
+                  - type: sensor
+                    name: "Итого"
+                    unit: "руб."
+                    entity: sensor.domyland_heating_total
           - type: horizontal-stack
             cards:
               - type: entities
                 entities:
                   - sensor.domyland_heating_last_check
                   - sensor.domyland_heating_last_submit
+                  - sensor.domyland_heating_tariff
+                  - sensor.domyland_heating_total
 
       - type: vertical-stack
         cards:
@@ -303,12 +325,18 @@ views:
                         name: "Расход"
                         unit: "м³"
                         entity: sensor.domyland_water_cold_delta
+                      - type: sensor
+                        name: "Итого"
+                        unit: "руб."
+                        entity: sensor.domyland_water_cold_total
               - type: horizontal-stack
                 cards:
                   - type: entities
                     entities:
                       - sensor.domyland_water_cold_last_check
                       - sensor.domyland_water_cold_last_submit
+                      - sensor.domyland_water_cold_tariff
+                      - sensor.domyland_water_cold_total
 
           - type: vertical-stack
             cards:
@@ -332,12 +360,18 @@ views:
                         name: "Расход"
                         unit: "м³"
                         entity: sensor.domyland_water_hot_delta
+                      - type: sensor
+                        name: "Итого"
+                        unit: "руб."
+                        entity: sensor.domyland_water_hot_total
               - type: horizontal-stack
                 cards:
                   - type: entities
                     entities:
                       - sensor.domyland_water_hot_last_check
                       - sensor.domyland_water_hot_last_submit
+                      - sensor.domyland_water_hot_tariff
+                      - sensor.domyland_water_hot_total
 
               - type: vertical-stack
                 cards:
@@ -354,3 +388,13 @@ views:
                             name: "Расход"
                             unit: "м³"
                             entity: sensor.domyland_water_drainage_delta
+                          - type: sensor
+                            name: "Итого"
+                            unit: "руб."
+                            entity: sensor.domyland_water_drainage_total
+                  - type: horizontal-stack
+                    cards:
+                      - type: entities
+                        entities:
+                          - sensor.domyland_water_drainage_tariff
+                          - sensor.domyland_water_drainage_total

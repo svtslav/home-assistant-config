@@ -29,12 +29,12 @@
     domyland_water_cold_last_submit:
       friendly_name: "Дата последней передачи показаний"
       icon_template: mdi:calendar-clock
-      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].submittedAt }}"
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].submittedAt | int | timestamp_custom('%d.%m.%Y %H:%M') }}"
 
     domyland_water_cold_last_check:
       friendly_name: "Дата последнего обновления показаний"
       icon_template: mdi:calendar-clock
-      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].createdAt }}"
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][0].createdAt | int | timestamp_custom('%d.%m.%Y %H:%M') }}"
 
     domyland_water_cold_last_calibration_date:
       friendly_name: "Дата последней калибровки счётчика ХВС"
@@ -58,6 +58,18 @@
       value_template: "{{ states.sensor.domyland_water.attributes['items'][0].delta1 | float }}"
       unit_of_measurement: "m³"
 
+    domyland_water_cold_tariff:
+      friendly_name: "Тариф ХВС"
+      icon_template: mdi:cash
+      value_template: "43.57"
+      unit_of_measurement: "RUB/m³"
+
+    domyland_water_cold_total:
+      friendly_name: "Итого ХВС"
+      icon_template: mdi:cash-multiple
+      value_template: "{{ (states.sensor.domyland_water_cold_delta.state | float * states.sensor.domyland_water_cold_tariff.state | float) | round(2) }}"
+      unit_of_measurement: "RUB"
+
     # Горячая вода
     domyland_water_hot_gauge_number:
       friendly_name: "Номер счётчика ГВС"
@@ -67,12 +79,12 @@
     domyland_water_hot_last_submit:
       friendly_name: "Дата последней передачи показаний"
       icon_template: mdi:calendar-clock
-      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].submittedAt }}"
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].submittedAt | int | timestamp_custom('%d.%m.%Y %H:%M') }}"
 
     domyland_water_hot_last_check:
       friendly_name: "Дата последнего обновления показаний"
       icon_template: mdi:calendar-clock
-      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].createdAt }}"
+      value_template: "{{ states.sensor.domyland_water.attributes['items'][1].createdAt | int | timestamp_custom('%d.%m.%Y %H:%M') }}"
 
     domyland_water_hot_last_calibration_date:
       friendly_name: "Дата последней калибровки счётчика ГВС"
@@ -96,6 +108,18 @@
       value_template: "{{ states.sensor.domyland_water.attributes['items'][1].delta1 | float }}"
       unit_of_measurement: "m³"
 
+    domyland_water_hot_tariff:
+      friendly_name: "Тариф ГВС"
+      icon_template: mdi:cash
+      value_template: "211.67"
+      unit_of_measurement: "RUB/m³"
+
+    domyland_water_hot_total:
+      friendly_name: "Итого ГВС"
+      icon_template: mdi:cash-multiple
+      value_template: "{{ (states.sensor.domyland_water_hot_delta.state | float * states.sensor.domyland_water_hot_tariff.state | float) | round(2) }}"
+      unit_of_measurement: "RUB"
+
     # Водоотведение
     domyland_water_drainage_value:
       friendly_name: "Водоотведение"
@@ -108,3 +132,15 @@
       icon_template: mdi:water-pump
       value_template: "{{ (states.sensor.domyland_water.attributes['items'][0].delta1 | float) + (states.sensor.domyland_water.attributes['items'][1].delta1 | float) }}"
       unit_of_measurement: "m³"
+
+    domyland_water_drainage_tariff:
+      friendly_name: "Тариф водоотведение"
+      icon_template: mdi:cash
+      value_template: "32.02"
+      unit_of_measurement: "RUB/m³"
+
+    domyland_water_drainage_total:
+      friendly_name: "Итого водоотведение"
+      icon_template: mdi:cash-multiple
+      value_template: "{{ (states.sensor.domyland_water_drainage_delta.state | float * states.sensor.domyland_water_drainage_tariff.state | float) | round(2) }}"
+      unit_of_measurement: "RUB"

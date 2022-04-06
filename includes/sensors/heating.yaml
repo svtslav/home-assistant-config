@@ -34,12 +34,12 @@
     domyland_heating_last_submit:
       friendly_name: "Дата последней передачи показаний"
       icon_template: mdi:calendar-clock
-      value_template: "{{ states.sensor.domyland_heating.attributes.submittedAt }}"
+      value_template: "{{ states.sensor.domyland_heating.attributes.submittedAt | int | timestamp_custom('%d.%m.%Y %H:%M') }}"
 
     domyland_heating_last_check:
       friendly_name: "Дата последнего обновления показаний"
       icon_template: mdi:calendar-clock
-      value_template: "{{ states.sensor.domyland_heating.attributes.createdAt }}"
+      value_template: "{{ states.sensor.domyland_heating.attributes.createdAt | int | timestamp_custom('%d.%m.%Y %H:%M') }}"
 
     domyland_heating_last_calibration_date:
       friendly_name: "Дата последней калибровки теплосчётчика"
@@ -62,3 +62,15 @@
       icon_template: mdi:radiator
       value_template: "{{ states.sensor.domyland_heating.attributes.delta1 | float }}"
       unit_of_measurement: "GCal"
+
+    domyland_heating_tariff:
+      friendly_name: "Тариф отопление"
+      icon_template: mdi:cash
+      value_template: "2033.84"
+      unit_of_measurement: "RUB/GCal"
+
+    domyland_heating_total:
+      friendly_name: "Итого отопление"
+      icon_template: mdi:cash-multiple
+      value_template: "{{ (states.sensor.domyland_heating_delta.state | float * states.sensor.domyland_heating_tariff.state | float) | round(2) }}"
+      unit_of_measurement: "RUB"
