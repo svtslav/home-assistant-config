@@ -1,0 +1,109 @@
+title: "Камеры"
+cards:
+  - type: vertical-stack
+    cards:
+      - type: grid
+        title: "Вход во двор"
+        columns: 2
+        square: false
+        cards:
+          - type: picture-entity
+            name: "5-6 корпус"
+            camera_image: camera.intercom_entrance_5_6
+            camera_view: auto
+            entity: camera.intercom_entrance_5_6
+            show_state: false
+
+          - type: picture-entity
+            name: "2-3 корпус"
+            camera_image: camera.intercom_entrance_2_3
+            camera_view: auto
+            entity: camera.intercom_entrance_2_3
+            show_state: false
+
+          - type: picture-entity
+            name: "1-2 корпус"
+            camera_image: camera.intercom_entrance_1_2
+            camera_view: auto
+            entity: camera.intercom_entrance_1_2
+            show_state: false
+
+      - type: grid
+        title: "Двор"
+        columns: 2
+        square: false
+        cards:
+          - type: picture-entity
+            name: "3 корпус"
+            camera_image: camera.courtyard_3_building
+            camera_view: auto
+            entity: camera.courtyard_3_building
+            show_state: false
+
+          - type: picture-entity
+            name: "1 корпус"
+            camera_image: camera.courtyard_1_building
+            camera_view: auto
+            entity: camera.courtyard_1_building
+            show_state: false
+
+          - type: picture-entity
+            name: "Детская площадка"
+            camera_image: camera.playground
+            camera_view: auto
+            entity: camera.playground
+            show_state: false
+
+  - type: vertical-stack
+    cards:
+      - type: grid
+        title: "Подъезд"
+        columns: 2
+        square: false
+        cards:
+          - type: picture-entity
+            name: "Вход в подъезд"
+            camera_image: camera.main_entrance
+            camera_view: live
+            entity: camera.main_entrance
+            show_state: false
+
+          - type: picture-entity
+            name: "Домофон (подъезд)"
+            camera_image: camera.intercom_lobby_entrance
+            camera_view: live
+            entity: camera.intercom_lobby_entrance
+            show_state: false
+
+          - type: picture-entity
+            name: "Лобби"
+            camera_image: camera.lobby
+            camera_view: live
+            entity: camera.lobby
+            show_state: false
+
+          - type: picture-entity
+            name: "Лифты"
+            camera_image: camera.lobby_elevators
+            camera_view: live
+            entity: camera.lobby_elevators
+            show_state: false
+
+      - type: grid
+        title: "Паркинг"
+        columns: 2
+        square: false
+        cards:
+          - type: picture-entity
+            name: "Лифты (-2 этаж)"
+            camera_image: camera.parking_elevators
+            camera_view: auto
+            entity: camera.parking_elevators
+            show_state: false
+
+          - type: picture-entity
+            name: Паркинг
+            camera_image: camera.parking
+            camera_view: auto
+            entity: camera.parking
+            show_state: false

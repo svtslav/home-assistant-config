@@ -42,3 +42,18 @@
 - platform: mjpeg
   name: "intercom_lobby_entrance"
   mjpeg_url: !secret camera_intercom_lobby_entrance_url
+
+  # Домофон на входе между 1 и 2 корпусами
+- platform: mjpeg
+  name: "intercom_entrance_1_2"
+  mjpeg_url: !secret camera_intercom_entrance_1_2_url
+
+  # Домофон на входе между 2 и 3 корпусами
+- platform: mjpeg
+  name: "intercom_entrance_2_3"
+  mjpeg_url: !secret camera_intercom_entrance_2_3_url
+
+  # Домофон на входе между 5 и 6 корпусами
+- platform: mjpeg
+  name: "intercom_entrance_5_6"
+  mjpeg_url: !secret camera_intercom_entrance_5_6_url

@@ -11,8 +11,14 @@ camera.parking_elevators:
 camera.playground:
   friendly_name: "Детская площадка"
 camera.courtyard_1_building:
-  friendly_name: "1 корпус (улица)"
+  friendly_name: "1 корпус (двор)"
 camera.courtyard_3_building:
-  friendly_name: "3 корпус (улица)"
+  friendly_name: "3 корпус (двор)"
 camera.intercom_lobby_entrance:
   friendly_name: "Домофон (подъезд)"
+camera.intercom_entrance_1_2:
+  friendly_name: "Домофон (1-2 корпус)"
+camera.intercom_entrance_2_3:
+  friendly_name: "Домофон (2-3 корпус)"
+camera.intercom_entrance_5_6:
+  friendly_name: "Домофон (5-6 корпус)"
