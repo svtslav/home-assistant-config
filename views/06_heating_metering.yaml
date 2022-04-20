@@ -1,0 +1,36 @@
+title: "Отопление"
+cards:
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        title: "Отопление"
+        cards:
+          - type: entities
+            entities:
+              - sensor.domyland_heating_gauge_number
+              - sensor.domyland_heating_last_calibration_date
+              - sensor.domyland_heating_next_calibration_date
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: gauge
+                name: "Отопление"
+                unit: "ГКал"
+                entity: sensor.domyland_heating_value
+              - type: sensor
+                name: "Расход"
+                unit: "ГКал"
+                entity: sensor.domyland_heating_delta
+              - type: sensor
+                name: "Итого"
+                unit: "руб."
+                entity: sensor.domyland_heating_total
+      - type: horizontal-stack
+        cards:
+          - type: entities
+            entities:
+              - sensor.domyland_heating_last_check
+              - sensor.domyland_heating_last_submit
+              - sensor.domyland_heating_tariff
+              - sensor.domyland_heating_total
