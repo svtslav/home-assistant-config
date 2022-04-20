@@ -4,6 +4,7 @@ views:
   - !include views/02_cameras.yaml
   - !include views/03_media.yaml
   - !include views/04_water_metering.yaml
+  - !include views/05_electricity_metering.yaml
 
   - title: "Устройства"
     cards:
@@ -24,71 +25,6 @@ views:
 
   - title: "Счётчики"
     cards:
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            title: "Электричество"
-            cards:
-              - type: entities
-                entities:
-                  - sensor.domyland_electricity_gauge_number
-                  - sensor.domyland_electricity_last_calibration_date
-                  - sensor.domyland_electricity_next_calibration_date
-          - type: horizontal-stack
-            cards:
-              - type: vertical-stack
-                cards:
-                  - type: gauge
-                    name: "T1 (пик)"
-                    unit: "КВт/ч"
-                    entity: sensor.domyland_electricity_t1_value
-                  - type: sensor
-                    name: "Расход T1 (пик)"
-                    unit: "КВт/ч"
-                    entity: sensor.domyland_electricity_t1_delta
-                  - type: sensor
-                    name: "Итого T1 (пик)"
-                    unit: "руб."
-                    entity: sensor.domyland_electricity_t1_total
-              - type: vertical-stack
-                cards:
-                  - type: gauge
-                    name: "T2 (ночь)"
-                    unit: "КВт/ч"
-                    entity: sensor.domyland_electricity_t2_value
-                  - type: sensor
-                    name: "Расход T2 (ночь)"
-                    unit: "КВт/ч"
-                    entity: sensor.domyland_electricity_t2_delta
-                  - type: sensor
-                    name: "Итого T2 (ночь)"
-                    unit: "руб."
-                    entity: sensor.domyland_electricity_t2_total
-              - type: vertical-stack
-                cards:
-                  - type: gauge
-                    name: "T3 (п/пик)"
-                    unit: "КВт/ч"
-                    entity: sensor.domyland_electricity_t3_value
-                  - type: sensor
-                    name: "Расход T3 (п/пик)"
-                    unit: "КВт/ч"
-                    entity: sensor.domyland_electricity_t3_delta
-                  - type: sensor
-                    name: "Итого T3 (п/пик)"
-                    unit: "руб."
-                    entity: sensor.domyland_electricity_t3_total
-          - type: horizontal-stack
-            cards:
-              - type: entities
-                entities:
-                  - sensor.domyland_electricity_last_check
-                  - sensor.domyland_electricity_last_submit
-                  - sensor.domyland_electricity_t1_tariff
-                  - sensor.domyland_electricity_t2_tariff
-                  - sensor.domyland_electricity_t3_tariff
-                  - sensor.domyland_electricity_total
-
       - type: vertical-stack
         cards:
           - type: horizontal-stack
