@@ -21,3 +21,4 @@
 - Yeelight
 - AsusWRT
 - Spotify
+- Android TV

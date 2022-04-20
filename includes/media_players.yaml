@@ -1,4 +1,13 @@
 # Chromecast с Google TV в проекторе
-- platform: androidtv
-  name: wanbo_projector_chromecast
-  host: !secret wanbo_projector_chromecast_host
+# Интеграция перенесена в UI и больше не поддерживается в configuration.yaml
+# - platform: androidtv
+#   name: wanbo_projector_chromecast
+#   host: !secret wanbo_projector_chromecast_host
+#   exclude_unnamed_apps: true
+#   get_sources: true
+#   apps:
+#     com.google.android.tvlauncher: Home
+#     com.google.android.youtube.tv: Youtube
+#     com.netflix.ninja: Netflix
+#     ru.rt.video.app.tv: Wink
+#     ru.kinopoisk.tv: Кинопоиск

@@ -1,5 +1,5 @@
-media_player.wanbo_projector_chromecast:
-  friendly_name: "Проектор"
+media_player.android_tv_192_168_4_144:
+  friendly_name: "Проектор (chromecast)"
 
 media_player.spotify_svtslav:
   friendly_name: "Spotify"

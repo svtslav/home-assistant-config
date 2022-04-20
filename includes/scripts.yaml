@@ -2,14 +2,33 @@
 projector_run_kinopoisk:
   sequence:
     - service: androidtv.adb_command
-      entity_id: media_player.wanbo_projector_chromecast
+      entity_id: media_player.android_tv_192_168_4_144
       data:
         command: "am start -a android.intent.action.VIEW -d -n ru.kinopoisk.tv/ru.kinopoisk.tv.presentation.splash.SplashActivity"
 
 # Запуск приложения Wink на проекторе
 projector_run_wink:
   sequence:
-    - service: androidtv.adb_command
-      entity_id: media_player.wanbo_projector_chromecast
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.android_tv_192_168_4_144
       data:
-        command: "am start -a android.intent.action.VIEW -d -n ru.rt.video.app.tv/com.rostelecom.zabava.ui.splash.SplashActivity"
+        source: "ru.rt.video.app.tv"
+
+# Запуск приложения Netflix на проекторе
+projector_run_netflix:
+  sequence:
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.android_tv_192_168_4_144
+      data:
+        source: "com.netflix.ninja"
+
+# Запуск приложения YouTube на проекторе
+projector_run_youtube:
+  sequence:
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.android_tv_192_168_4_144
+      data:
+        source: "com.google.android.youtube.tv"

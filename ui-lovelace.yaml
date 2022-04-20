@@ -2,6 +2,7 @@ title: "Home Assistant"
 views:
   - !include views/01_system.yaml
   - !include views/02_cameras.yaml
+  - !include views/03_media.yaml
 
   - title: "Устройства"
     cards:
@@ -19,35 +20,6 @@ views:
               - type: light
                 entity: light.floor_lamp
                 name: Торшер
-
-      - type: horizontal-stack
-        cards:
-          - type: grid
-            title: "Проектор"
-            columns: 1
-            cards:
-              - type: media-control
-                entity: media_player.wanbo_projector_chromecast
-              - type: media-control
-                entity: media_player.spotify_svtslav
-
-          - type: grid
-            title: "Приложения"
-            columns: 2
-            cards:
-              - type: button
-                entity: script.projector_run_kinopoisk
-                name: "Кинопоиск"
-                icon: mdi:video-minus
-                tap_action:
-                  action: toggle
-
-              - type: button
-                entity: script.projector_run_wink
-                name: "Wink"
-                icon: mdi:video-minus
-                tap_action:
-                  action: toggle
 
   - title: "Счётчики"
     cards:
