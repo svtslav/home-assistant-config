@@ -22,3 +22,4 @@
 - AsusWRT
 - Spotify
 - Android TV
+- [HACS](https://hacs.xyz/)
